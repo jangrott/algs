@@ -5,7 +5,7 @@ public class BinarySearch {
     public static Boolean binarySearch(int[] arr, int n) {
         int start = 0, end = arr.length - 1, mid;
 
-        while(end >= start) {
+        while (end >= start) {
             mid = (start + end) / 2;
             if (arr[mid] == n) {
                 return true;
