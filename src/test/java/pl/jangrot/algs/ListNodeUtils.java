@@ -5,6 +5,10 @@ import java.util.List;
 public class ListNodeUtils {
 
     public static ListNode toListNode(List<Integer> items) {
+        return toListNode(items, false);
+    }
+
+    public static ListNode toListNode(List<Integer> items, boolean isCircular) {
         ListNode node = null, rootNode = null, lastNode = null;
 
         for (int item : items) {
@@ -19,6 +23,9 @@ public class ListNodeUtils {
             }
             lastNode = node;
             node = node.next;
+        }
+        if (isCircular) {
+            lastNode.next = rootNode;
         }
         return rootNode;
     }

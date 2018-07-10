@@ -15,8 +15,15 @@ class ListNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ListNode listNode = (ListNode) o;
-        return data == listNode.data &&
-                Objects.equals(next, listNode.next);
+
+        ListNode head = this;
+        do {
+            if (head.data != listNode.data) {
+                return false;
+            }
+            listNode = listNode.next;
+        } while ((head = head.next) != null && head != this);
+        return true;
     }
 
     @Override
@@ -26,9 +33,13 @@ class ListNode {
 
     @Override
     public String toString() {
-        return "ListNode{" +
-                "data=" + data +
-                ", next=" + next +
-                '}';
+        ListNode head = this;
+        StringBuilder sb = new StringBuilder();
+
+        do {
+            sb.append(head.data).append("->");
+        } while ((head = head.next) != null && head != this);
+
+        return sb.substring(0, sb.length() - 2);
     }
 }
